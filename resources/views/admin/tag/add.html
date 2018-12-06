@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="__PUBLIC__/plugins/layui/css/layui.css"  media="all">
+  <script type="text/javascript" src="__PUBLIC__/clip/js/jquery-2.1.3.min.js"></script>
+
+
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+
+  <style>
+    #clipArea {
+      margin: 20px;
+      height: 150px;
+      width: 320px;
+    }
+    #file,
+    #clipBtn {
+      margin: 20px;
+    }
+    #view {
+      margin: 0 auto;
+      width: 640px;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+
+    <div style="width:40%">
+
+      <form class="layui-form" action="" method="post" enctype="multipart/form-data" onsubmit="return false" id="form-add">
+        <div class="layui-form-item">
+          <label class="layui-form-label">标签名</label>
+          <div class="layui-input-inline">
+            <input type="text" name="name" id="name" required lay-verify="required" autocomplete="off" placeholder="" class="layui-input">
+          </div>
+        </div>
+        <div style="height:20px;"></div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">选择所属</label>
+          <div class="layui-input-inline">
+            <select name="category_id" lay-verify="required" required>
+              <option value="">请选择</option>
+              {volist name="tag" id="vo"}
+                <option value="{$vo.id}">{$vo.tag_name}</option>
+              {/volist}
+            </select>
+          </div>
+        </div>
+        <div class="layui-form-item">
+          <label class="layui-form-label"></label>
+          <div class="layui-input-inline">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+          </div>
+        </div>
+      </form>
+      </div>
+    <div style="height:200px;"></div>
+    <input type="hidden" id="public_src" value="__PUBLIC__/">
+<script src="__PUBLIC__/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+layui.use(['form'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  var index;
+  form.on('submit(demo1)', function(data){
+      // alert(JSON.stringify(data.field));
+        $.ajax({
+          type:"post",
+          url : "{:url('tag/add')}",
+          dataType:'json',
+          data: data.field,
+          success:function(result){
+              // alert(JSON.stringify(result));
+            if (result == 1){
+                // var index = parent.layer.getFrameIndex(window.name);
+                // parent.layer.close(index);//关闭当前页
+              window.location.reload();
+            }
+            if (result == 0){
+              layer.msg('添加失败');
+            }else{
+                layer.msg(result);
+            }
+          },
+          error:function(){
+            layer.msg('接口错误');
+          }
+        });
+
+    return false;
+  });
+
+
+});
+
+</script>
+
+
+
+</body>
+</html>

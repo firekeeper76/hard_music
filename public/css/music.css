@@ -1,0 +1,418 @@
+body{
+    background: #f5f5f5;
+}
+a{
+    font-size: 14px;
+}
+iframe{
+
+}
+a.bg-black:hover, a.bg-black:focus, a.bg-black.active,
+button.bg-black:hover,
+button.bg-black:focus {
+    background-color: #000000 !important;
+}
+.icon_search{
+    margin-right: -1.6em;
+    z-index: 1;
+}
+.input_search{
+    height: 32px;
+    font-size: 12px;
+}
+.subnav a{
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 0.3em 1em;
+    margin: 0em 1.7em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 10rem;
+}
+.subnav a.active {
+    color: #fff;
+    background-color: #9B0909;
+}
+
+.bg-red {
+    background-color: #C20C0C !important;
+}
+.bg-black {
+    background-color: #333333 !important;
+}
+.border-black {
+    border-color: #000000 !important;
+}
+.pl-4-5,
+ .px-4-5 {
+     padding-left: 2rem !important;
+ }
+.btn-outline-muted {
+    color: #aaaaaa;
+    background-color: transparent;
+    background-image: none;
+    border-color: #aaaaaa;
+}
+.btn-outline-muted:hover {
+    color: #DDDDDD;
+    border-color: #DDDDDD;
+}
+.btmbar{
+    padding: 7px;
+    height: 48px;
+}
+.music-list{
+    position: absolute;
+    height: 300px;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #333333;
+}
+.music_title{
+    line-height: 39px;
+    padding-left: 20px;
+}
+.content{
+    background: #FFFFFF;
+    width: 980px;
+    margin: auto;
+}
+#CarouselBg{
+    transition: .3s;
+}
+.bg_none{
+    background-color: unset !important;
+}
+.contact{
+    height: 100%;
+    width: 100%;
+    background-size: 237px auto !important;
+}
+.contact, .contact .btn {
+    background: url(../img/contact.png) no-repeat 0 0;
+}
+
+
+
+
+.c-border{
+    border-color: #d3d3d3;
+}
+.v-hd2{
+    height: 35px;
+    border-bottom: 2px solid #C10D0C;
+}
+.v-hd2 i{
+    color: #C10D0C;
+    font-size: 20px;
+    padding: 0 8px;
+}
+.v-hd2 a{
+    font-size: 20px;
+    color: #000000;
+}
+.v-hd2 div.tab,.v-hd2 div.tab a{
+    color: #666666;
+    font-size: 12px;
+    display: inline-block;
+}
+.v-hd2 span.more{
+    padding-top: 6px;
+    float: right;
+}
+.v-hd2 span.more a{
+    color: #666666;
+    font-size: 12px;
+}
+.v-hd2 span.more i{
+    color: #C10D0C;
+    font-size: 12px;
+}
+.f-cb:after {
+    clear: both;
+    content: '.';
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+.m-cvrlst{
+    margin: 20px 0 0 -44px;
+    padding: 0;
+}
+.m-cvrlst li {
+    float: left;
+    display: inline-block;
+    width: 184px;
+    height: 218px;
+    overflow: hidden;
+    padding: 0 0 30px 44px;
+    line-height: 1.4;
+    list-style: unset;
+}
+.u-cover{
+    width: 140px;
+    height: 140px;
+    position: relative;
+}
+.u-cover .bottom, .u-cover .msk, .n-musicsd .lst .avatar .msk {
+    background: url('/images/coverall.png') no-repeat;
+    background-image: url('/images/coverall.png');
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    _background: url(/images/coverall_8.png) no-repeat 0 9999px;
+}
+.u-cover .msk {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: 0 0;
+}
+.u-cover .bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 27px;
+    background-position: 0 -537px;
+    color: #ccc;
+    font-size: 12px;
+    line-height: 26px;
+}
+.u-cover .bottom span.fa{
+    margin-left: 10px;
+}
+.u-cover .bottom a.f-fr{
+    text-decoration: none;
+    color: #cccccc;
+    font-size: 18px;
+    line-height: 26px;
+    margin-right: 10px;
+}
+.s-fc0, a.s-fc0:hover {
+    color: #000;
+}
+
+#newSongList{
+	background: #F5F5F5;
+	border: 1px solid #CCCCCC;
+	margin: 20px 0px;
+}
+#newSongList ul{
+	height: 140px;
+}
+#newSongList ul li{
+	margin-left: 13px;
+	width: 118px;
+	height: 140px;
+}
+.f-alpha{
+    position: absolute;
+    bottom: 2px;
+    right: 4px;
+    color: #DDDDDD;
+    font-size: 20px;
+}
+.f-alpha:hover{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+.nsl_prev .carousel-control-prev-icon,
+.nsl_next .carousel-control-next-icon{
+    background: url("../img/nsl-btn.png") no-repeat;
+    background-image: url("../img/nsl-btn.png");
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    _background: url("../img/nsl-btn.png") no-repeat 0 9999px;
+}
+.nsl_prev,
+.nsl_next{
+    width: 20px !important;
+}
+.nsl_prev .carousel-control-prev-icon{
+    background-position: 5px 3px;
+
+}
+.nsl_next .carousel-control-next-icon{
+    background-position: -35px 3px;
+}
+
+#newSongList ul li:first-of-type{
+    margin-left: 0;
+}
+.u-cover-alb1 .msk {
+    width: 118px;
+    height: 100px;
+    background-position: 0 -570px;
+}
+.u-cover-alb1 {
+    margin-bottom: 7px;
+    margin-right: 16px;
+    width: 100px;
+    height: 100px;
+}
+.f-thide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    margin: unset;
+    height: 18px;
+    line-height: 18px;
+}
+.s-fc0, a.s-fc0:hover {
+    color: #000;
+    font-size: 12px;
+    line-height: 18px;
+    height: 18px;
+}
+.s-fc3, a.s-fc3:hover {
+    color: #666;
+    font-size: 12px;
+}
+/*榜单*/
+.n-bilst {
+    height: 472px;
+    margin-top: 20px;
+    padding-left: 1px;
+}
+.n-bilst {
+    background: url('/images/index_bill.png') no-repeat;
+}
+.n-bilst .blk {
+    float: left;
+    width: 230px;
+}
+.n-bilst .top {
+    height: 120px;
+    padding: 20px 0 0 19px;
+}
+.n-bilst .cver {
+    float: left;
+    display: inline;
+}
+.u-cover-4 {
+    width: 80px;
+    height: 80px;
+}
+.u-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.u-cover-4 .msk {
+    background-position: -145px -57px;
+}
+.u-cover .msk {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.n-bilst .tit {
+    float: left;
+    width: 116px;
+    margin: 6px 0 0 10px;
+}
+.n-bilst a{
+    color: #222222;
+
+}
+.n-bilst .tit h3 {
+    width: 100%;
+    font-weight: bold;
+}
+.f-thide {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+}
+.f-fs1 {
+    font-size: 14px;
+}
+.n-bilst ol {
+    padding: 0;
+    height: 319px;
+    margin: unset;
+    margin-left: 50px;
+    line-height: 32px;
+    display: block;
+}
+.n-bilst ol li {
+    height: 32px;
+    list-style: none;
+    line-height: 32px;
+    position: relative;
+}
+.n-bilst ol .no {
+    float: left;
+    position: relative;
+    width: 35px;
+    height: 32px;
+    margin-left: -35px;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+}
+.n-bilst ol .no-top {
+    color: #c10d0c;
+}
+.n-bilst .more {
+    clear: both;
+    height: 32px;
+    margin-right: 32px;
+    text-align: right;
+    line-height: 32px;
+}
+.n-bilst ol .oper {
+    display: none;
+    float: right;
+    width: 82px;
+    margin-top: 7px;
+}
+.n-bilst ol li:hover .oper{
+    display: block;
+}
+.n-bilst ol .oper a {
+    text-decoration: none;
+    float: left;
+    width: 17px;
+    height: 17px;
+    margin-right: 10px;
+    color: #888888;
+}
+.n-bilst ol .oper a:hover{
+    color: #222222;
+}
+.n-bilst ol li * {
+    vertical-align: middle;
+}
+.n-myinfo{
+    background: #DDDDDD;
+    height: 126px;
+}
+
+

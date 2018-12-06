@@ -1,0 +1,55 @@
+body{
+    background:rgb(245,245,245);
+}
+.table > tr >td {
+    height: 30px;
+    max-height: 30px;
+}
+.nav_artist{
+    cursor: pointer;
+}
+.nav_artist:hover{
+    color:rgb(194,12,12);
+}
+.active_nav{
+    color:rgb(194,12,12);
+    background: #fff;
+}
+.over-flow{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+a{
+    color: #000;
+}
+a:hover{
+    color: #000;
+}
+.col-c5{
+    width: 20%;
+    padding:0;
+}
+.tags{
+    height:20px;
+    display: inline-block;
+    background:ghostwhite;
+    border-radius: 10px;
+    border: 1px solid darkgray;
+    line-height: 20px;
+    font-size:14px;
+}
+.tags:hover{
+    background:gainsboro;
+    text-decoration: none;
+}
+
+.container{
+    width:980px;
+    min-height: 700px;
+    max-width:none;
+    background: #ffffff;
+    border-left:1px solid rgba(0,0,0,0.3);
+    border-right:1px solid rgba(0,0,0,0.3);
+    border-bottom:1px solid rgba(0,0,0,0.3);
+}

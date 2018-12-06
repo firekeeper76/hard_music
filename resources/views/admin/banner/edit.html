@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="stylesheet" href="/plugins/layui/css/layui.css"  media="all">
+  <script type="text/javascript" src="/clip/js/jquery-2.1.3.min.js"></script>
+
+  <script src="/clip/js/jquery-2.1.3.min.js"></script>
+  <script src="/clip/js/iscroll-zoom.js"></script>
+  <script src="/clip/js/hammer.js"></script>
+  <script src="/clip/js/lrz.all.bundle.js"></script>
+  <script src="/clip/js/jquery.photoClip.js"></script>
+  <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+  <style>
+    #clipArea {
+      margin: 20px;
+      height: 345px;
+      width: 980px;
+    }
+    #file,
+    #clipBtn {
+      margin: 20px;
+    }
+    #view {
+      margin: 0 auto;
+      width: 980px;
+      height: 345px;
+    }
+  </style>
+</head>
+<body>
+
+    <div style="width:40%">
+
+      <form class="layui-form"  method="post" enctype="multipart/form-data" onsubmit="return false"  id="form-add">
+        <div style="height:20px;"></div>
+        <input type="hidden" value="{$banner.src}" id="src">
+        <div class="layui-form-item">
+          <label class="layui-form-label">图片链接到</label>
+          <div class="layui-input-block">
+            <input type="text" name="" value="{$banner.src_to}" id="src_to" autocomplete="off" placeholder="" class="layui-input">
+          </div>
+        </div>
+        <div style="height:20px;"></div>
+        <div class="layui-form-item">
+          <label class="layui-form-label">背景色</label>
+          <div class="layui-input-block">
+            <input type="text" id="bg_color" value="{$banner.bg_color}" autocomplete="off" placeholder="" class="layui-input">
+          </div>
+        </div>
+        <div style="height:20px;"></div>
+
+        <div class="layui-form-item">
+          <label class="layui-form-label">修改封面</label>
+          <div class="layui-input-block">
+            <button onclick="up()" class="layui-btn ">选择文件</button>
+            <button id="clipBtn" class="layui-btn layui-btn-danger">截取预览</button>
+            <a href="javascript:save_img();" class="layui-btn layui-btn-warm">确认保存</a>
+            <input type="file" id="file" style="display:none;">
+            <h4 id="tips" style="display: none;color:red;">拖动选取目标区域,双击旋转图片</h4>
+            <div id="clipArea" style="display: none;"></div>
+            <h4 id="pre_tips" style="display: none;">预览效果</h4>
+            <div id="view" style="display:block;background-color: rgb(102, 102, 102); background-repeat: no-repeat; background-position: center center; background-size: contain; background-image: url('__PUBLIC__/{$banner.src}')"></div>
+          </div>
+        </div>
+
+        <br/>
+        <div class="layui-form-item">
+          <label class="layui-form-label"></label>
+          <div class="layui-input-inline">
+            <button class="layui-btn" onclick="edit()">立即提交</button>
+          </div>
+        </div>
+      </form>
+      </div>
+    <div style="height:200px;"></div>
+<script src="/plugins/layui/layui.js" charset="utf-8"></script>
+<script type="text/javascript">
+layui.use(['form'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+    var index;
+
+
+
+});
+
+</script>
+    <script>
+
+      function edit(){
+          var id = '{$banner.id}';
+          var src = $('#src').val();
+          var src_to = $('#src_to').val();
+          var bg_color = $('#bg_color').val();
+          if(!src){
+            layer.msg('请先上传图片');
+            return ;
+          }
+          if(!src_to){
+              layer.msg('链接地址不能为空');
+              return;
+          }
+          if(!bg_color){
+              layer.msg('背景色不能为空');
+              return;
+          }
+
+          $.ajax({
+              type:"post",
+              url : "{:url('banner/edit')}",
+              dataType:'json',
+              data: {'id':id,'src':src,'src_to':src_to,'bg_color':bg_color},
+              success:function(result){
+                  if (result == 1){
+                      layer.msg('修改成功');
+                  }else if (result == 0){
+                      layer.msg('修改失败');
+                  }
+              },
+              error:function(){
+                  layer.msg('接口错误');
+              }
+          });
+      }
+
+
+        var count = 0;
+        var base64_img;
+        function up(){
+            $('#file').click();
+        }
+        var clipArea = new bjj.PhotoClip("#clipArea", {
+            size: [475, 175],
+            outputSize: [980, 345],
+            file: "#file",
+            view: "#view",
+            ok: "#clipBtn",
+            loadStart: function() {
+                console.log("图片读取中");
+            },
+            loadComplete: function() {
+                $('#tips').css('display',"block");
+                $('#clipArea').css('display',"block");
+                console.log("图片读取完成");
+            },
+            clipFinish: function(dataURL) {
+                $('#view').css('display',"block");
+                $('#pre_tips').css('display',"block");
+                base64_img = dataURL;
+                // console.log(dataURL);
+            }
+        });
+        //clipArea.destroy();
+        function save_img(){
+            if(base64_img){
+                $.ajax({
+                    type:"post",
+                    url : "{:url('common/upload_img')}",
+                    dataType:'json',
+                    data: {'img':base64_img,'type':'banner'},
+                    success:function(data){
+                        layer.msg('图片上传成功');
+                        var old_img =  $('#src').val();
+
+                            $.ajax({
+                                type:"post",
+                                url : "{:url('banner/del_img')}",
+                                dataType:'json',
+                                data: {'img':old_img},
+                                success:function(data){
+                                },
+                                error:function(){
+                                    console.log('接口错误');
+                                }
+                            });
+
+
+
+                        $('#src').val(data);
+                    },
+                    error:function(){
+                        console.log('接口错误');
+                    }
+                });
+                return ;
+            }
+            layer.msg("请先选择图片截取后上传");
+        }
+
+
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>
