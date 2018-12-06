@@ -223,9 +223,9 @@
 								<label for="credential" class="col-form-label">密码:</label>
 								<input type="password" class="form-control" id="credential">
 							</div>
-							<div class="form-group">
+							<div class="form-group" style="position:relative;">
 								<label for="code" class="col-form-label">验证码:</label>
-								<img style="float:right;cursor: pointer;" id="verify" src="{{captcha_src()}}" alt="captcha" onclick="this.src='{{captcha_src()}}?'+Math.random()"/>
+								<img style="float:right;cursor: pointer;position: absolute;right:0px;bottom:0px;" height="40px" id="verify" src="{{captcha_src()}}" alt="captcha" onclick="this.src='{{captcha_src()}}?'+Math.random()"/>
 								<input type="text" class="form-control" id="captcha">
 							</div>
 							<div class="form-check">

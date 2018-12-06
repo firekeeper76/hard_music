@@ -9,11 +9,13 @@ use App\Http\Controllers\Controller;
 use Session;
 class VipController extends Controller
 {
-    public function vip(){
+    public function vip()
+    {
         return view('index.vip.vip');
     }
 
-    public function ddpay(Request $request){
+    public function ddpay(Request $request)
+    {
 
         $data['pay_to'] = $request->get('payTo');
         if($data['pay_to'] == 'default'){

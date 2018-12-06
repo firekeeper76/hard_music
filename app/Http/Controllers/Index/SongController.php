@@ -11,7 +11,8 @@ use App\Http\Controllers\Controller;
 
 class SongController extends Controller
 {
-    public function song(Request $request){
+    public function song(Request $request)
+    {
         $id = $request->get('id');
         $song = Song::findOrFail($id);
 
@@ -20,7 +21,7 @@ class SongController extends Controller
         $arr = explode(",", $tags);
         if($arr){
             $other_song = Song::where('tags','like',"%".$arr[0]."%")->get();
-        }else{
+        } else {
             $other_song = Song::orderBy('play','desc')->limit(5)->get();
         }
 
@@ -29,7 +30,8 @@ class SongController extends Controller
     }
 
 
-    public function getPlayListSong(Request $request){
+    public function getPlayListSong(Request $request)
+    {
         $id = $request->get('id');
         $collection_songs = Collection::where('topic_type','1')->where('playlist_id',$id)->orderBy('created_at','desc')->get();
         $songs =[];
@@ -44,7 +46,8 @@ class SongController extends Controller
         return response()->json($songs);
     }
 
-    public function getAlbumSong(Request $request){
+    public function getAlbumSong(Request $request)
+    {
         $id = $request->get('id');
         $songs = Album::find($id)->songs;
         foreach ($songs as $key=>$value){

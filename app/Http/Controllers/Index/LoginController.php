@@ -18,10 +18,9 @@ class LoginController extends Controller
      * 方法：POST
      * 参数：identifier，credential，captcha，identity_type
      */
-    public function login(Request $request){
-
+    public function login(Request $request)
+    {
         $data = $request->all();
-
         $rule = [
             'captcha' => 'required|captcha',
             'identifier' => 'required|min:11|max:11',
@@ -38,7 +37,6 @@ class LoginController extends Controller
             $result['messages'] = $errors->first();
             return response() -> json($result);
         }
-
         $auths = User_auths::where('identity_type',$data['identity_type'])->where('identifier',$data['identifier'])->first();
 
         $result['StateCode'] = 201;
@@ -73,10 +71,10 @@ class LoginController extends Controller
         }
         return response() -> json($result);
 
-//        return response() -> json(1111);
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $data = $request->all();
 //        return response() -> json($data);
         $rule = [
@@ -119,12 +117,10 @@ class LoginController extends Controller
             $result['messages'] = '创建用户失败';
         }
         return response() -> json($result);
-
-
     }
 
-    public function login_off(Request $request){
-//        dump(Session::get('id'));
+    public function login_off(Request $request)
+    {
         $request->session()->flush();
         return redirect('/');
     }
