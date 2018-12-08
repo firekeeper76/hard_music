@@ -39,6 +39,8 @@ Route::get('/search','Index\IndexController@search');//搜索
 
 Route::get('/vip','Index\VipController@vip');//会员充值页面
 Route::post('/ddpay','Index\VipController@ddpay');//会员充值完成回调
+Route::post('/isvip','Index\VipController@isvip');//会员充值会员session
+
 
 Route::get('/user','Index\UserController@user');//用户主页
 Route::any('/user/edit','Index\UserController@user_edit');//修改用户资料

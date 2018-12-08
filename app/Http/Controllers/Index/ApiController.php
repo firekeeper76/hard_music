@@ -15,9 +15,7 @@ class ApiController extends Controller
     {
 
         header("Content-Type:text/html;charset=utf-8");
-
         $code = $request->get('code');
-
 
         //使用Curl请求url
         $url = 'https://api.weibo.com/oauth2/access_token';
@@ -36,8 +34,6 @@ class ApiController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
         $res = curl_exec($ch);//返回的数据是json格式要转化成数组
         curl_close($ch);
-
-
         $json_arr = json_decode($res, true);  //返回的数据是json格式要转化成数组
         //转成数组后拿下到下面的两个参数
         $token = $json_arr['access_token'];

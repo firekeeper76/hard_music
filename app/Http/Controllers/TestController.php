@@ -21,6 +21,7 @@ use think\Exception;
 use Validator;
 use Cache;
 use Cookie;
+use Session;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\Storage;
 class testController extends Controller
@@ -36,20 +37,21 @@ class testController extends Controller
         // 我的锅，好久没用，忘记写第三个参数，就是因为你之前的 redis-server 启动配置文件问题。
         // 如果以后工作团队有自己的规范，按照团队的规范来，没有就按照 psr 代码规范。
         // 你的代码建议按照这个 规范来。
-
-        dd(cache()->put('i1111i', 'g11111111111111g', 1));
+        Session::put('aa', 2);
+dd(Session::get('aa'));
+//        dd(cache()->put('i1111i', 'g11111111111111g', 1));
 //        $key = 'rds';
 //        Redis::setex($key,101,'success');
 //        dd(Redis::get($key));
-        $key = 'rds';
-        if (Cache::has($key)){                //首先查寻cache如果找到
-            $values = Cache::get($key);    //直接读取cache0
-            dd($values.'2');
-        }else{                                   //如果cache里面没有
-            $value = 'success1';
-            Cache::put($key,$value,50);
-        }
-        dd(Cache::get($key));
+//        $key = 'rds';
+//        if (Cache::has($key)){                //首先查寻cache如果找到
+//            $values = Cache::get($key);    //直接读取cache0
+//            dd($values.'2');
+//        }else{                                   //如果cache里面没有
+//            $value = 'success1';
+//            Cache::put($key,$value,50);
+//        }
+//        dd(Cache::get($key));
 //        phpinfo();
 //        $data['name'] = $request->get('payTo').'-'.$request->get('playerId').'-'.$request->get('orderId').'-'.$request->get('sign').'-'.($request->get('payPrice')/100).'-'.$request->get('goodsId');
 ////        $data['name'] = 'pay';
@@ -186,10 +188,11 @@ class testController extends Controller
     // 函数的大括号总是换行的，你可以自己稍微看一下。好的
     public function test2 ()
     {
-        $manager = new ImageManager();
-//        $image = $manager->make('/111.jpg')->resize(300, 200);
-        $manager->make(base_path().'/111.jpg')->resize(300, 200);
-//        $manager->insert(base_path().'/222.jpg','bottom-right', 15, 10);
-        dd($manager->make(base_path().'/111.jpg')->resize(130,130)->save(base_path().'/222.jpg'));
+        dd(Session::get('is_vip'));
+//        $manager = new ImageManager();
+////        $image = $manager->make('/111.jpg')->resize(300, 200);
+//        $manager->make(base_path().'/111.jpg')->resize(300, 200);
+////        $manager->insert(base_path().'/222.jpg','bottom-right', 15, 10);
+//        dd($manager->make(base_path().'/111.jpg')->resize(130,130)->save(base_path().'/222.jpg'));
     }
 }

@@ -286,7 +286,8 @@
 		<script src="{{ URL::asset('index/music/js/smusic.js') }}"></script>
 		<script>
 
-            var is_vip = '{{Session::get('is_vip')}}'|| 0;
+            var is_vip = "{{Session::get('is_vip')}}"|| 0;
+
 			//搜索
             function EnterPress(e){ //传入 event
                 var e = e || window.event;
@@ -304,7 +305,7 @@
             }
 
 			$(function(){
-
+				console.log("{{Session::get('is_vip')}}");
 			    var src = location.hash.replace('#/', '');
 			    if(src){
                     localhash(src);
@@ -752,7 +753,22 @@
 			        setTips('请先登录');
 				}
 			}
-
+			function myReload(){
+			    is_vip = 1;
+				// $.ajax({
+				// 	url:'/isvip',
+				// 	type:"post",
+				// 	headers: {
+				// 		'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+				// 	},
+				// 	success:function (result) {
+				// 		console.log('bb-'+result);
+				// 	},
+				// 	error:function (result) {
+				// 	}
+				// })
+			    // window.location.reload();
+			}
 
 		</script>
 	</body>

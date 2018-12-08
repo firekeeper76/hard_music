@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="_token" content="{{ csrf_token() }}"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>会员</title>
@@ -165,10 +166,22 @@ function is_login(){
                 console.log(JSON.stringify(result));
                 if(result.code == 200){
                     window.parent.setTips('支付成功');
+                    window.parent.myReload();
+                    $.ajax({
+                        url:'/isvip',
+                        type:"post",
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                        },
+                        success:function (result) {
+                            console.log('aa-'+result);
+                        },
+                        error:function (result) {
+                        }
+                    });
                     setInterval(function() {
                         window.location.href="/user?id="+user_id;
                     }, 1000);
-                    // window.location.href="/me?id="+uid;
                 }else{
                     window.parent.setTips('还没支付完成噢');
                 }
